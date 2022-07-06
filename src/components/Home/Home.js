@@ -28,7 +28,7 @@ function Home() {
 
           <Col>
             <Card>
-              <Link to='comments' className='text-decoration-none text-warning fw-bolder p-2'>Comments</Link>
+              <Link to='comments' className='text-decoration-none text-primary fw-bolder p-2'>Comments</Link>
             </Card>
           </Col>
 

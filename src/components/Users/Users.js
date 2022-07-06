@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Container, Card, Col, Row } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../style.css'
+import * as ReactBootStrap from 'react-bootstrap';
 
 
 
@@ -9,10 +10,12 @@ import '../style.css'
 const Users = () => {
 
   const [users, setUsers] = useState();
+  const [isLoading, setLoading] = useState(true)
   useEffect(() => {
     fetch('https://jsonplaceholder.typicode.com/users').then(res => {
       return res.json();
     }).then(data => setUsers(data))
+    setLoading(false) 
 
   }, [])
 
@@ -34,6 +37,9 @@ const Users = () => {
             ))}
           </Row>
         </Col>
+        {isLoading ? (users) : (
+          <ReactBootStrap.Spinner animation="border" variant="dark" className='loading' />
+        )}
       </Container>
 
 

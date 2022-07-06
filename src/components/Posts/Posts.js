@@ -3,15 +3,16 @@ import axios from 'axios'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Card, Col, Row } from 'react-bootstrap';
 import '../style.css'
+import * as ReactBootStrap from 'react-bootstrap';
 
 
 const Posts = () => {
-
-
   const [posts, setPosts] = useState([]);
+  const [isLoading, setLoading] = useState(true)
   useEffect(() => {
     axios.get("https://jsonplaceholder.typicode.com/posts")
       .then(res => setPosts(res.data))
+    setLoading(false) 
 
 
   }, [])
@@ -30,6 +31,9 @@ const Posts = () => {
           ))}
         </Row>
       </Col>
+      {isLoading ? (posts) : (
+        <ReactBootStrap.Spinner animation="border" variant="success" className='loading' />
+      )}
     </Container>
   )
 }
