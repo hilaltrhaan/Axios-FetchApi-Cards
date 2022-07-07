@@ -19,7 +19,8 @@ const Posts = () => {
 
   return (
     <Container>
-      <Col>
+    
+      {isLoading ? <ReactBootStrap.Spinner animation="border" variant="success" className='loading' /> :   <Col>
         <Row>
 
           {posts && posts.map(post => (
@@ -31,9 +32,8 @@ const Posts = () => {
           ))}
         </Row>
       </Col>
-      {isLoading ? (posts) : (
-        <ReactBootStrap.Spinner animation="border" variant="success" className='loading' />
-      )}
+       
+      }
     </Container>
   )
 }

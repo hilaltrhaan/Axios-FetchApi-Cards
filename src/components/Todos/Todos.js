@@ -5,19 +5,22 @@ import '../style.css'
 import * as ReactBootStrap from 'react-bootstrap';
 
 const Todos = () => {
-  const [todos, setTodos] = useState()
+  const [todos, setTodos] = useState(null)
   const [isLoading, setLoading] = useState(true)
   useEffect(() => {
+ 
     fetch("https://jsonplaceholder.typicode.com/todos")
       .then(res => {
         return res.json();
       }).then(data => setTodos(data))
-    setLoading(false) 
+    setLoading(false)
   }, [])
 
   return (
     <Container>
-      <Col>
+
+      {isLoading ?  <ReactBootStrap.Spinner animation="border" variant="danger" className='loading ' />
+      :<Col>
         <Row>
           {todos && todos.map(todo => (
             <Card className='card' key={todo.id}>
@@ -26,10 +29,8 @@ const Todos = () => {
             </Card>
           ))}
         </Row>
-      </Col>
-      {isLoading ? (todos) : (
-        <ReactBootStrap.Spinner animation="border" variant="danger" className='loading' />
-      )}
+      </Col> 
+      }
     </Container>
   )
 }

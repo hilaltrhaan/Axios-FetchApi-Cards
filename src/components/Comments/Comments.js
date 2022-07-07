@@ -15,7 +15,9 @@ const Comments = () => {
   }, [])
   return (
     <Container>
-      <Col>
+      
+      
+      {isLoading ? <ReactBootStrap.Spinner animation="border" variant="primary" className='loading' /> : <Col>
         <Row>
           {comments && comments.map(comment => (
             <Card className='card' key={comment.id}>
@@ -24,13 +26,11 @@ const Comments = () => {
               <p>{comment.body}</p>
             </Card>
           ))}
-          
+
         </Row>
       </Col>
-      
-      {isLoading ? (comments) : (
-        <ReactBootStrap.Spinner animation="border" variant="primary" className='loading' />
-      )}
+        
+      }
     </Container>
 
   )
